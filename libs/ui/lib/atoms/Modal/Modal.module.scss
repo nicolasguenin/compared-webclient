@@ -1,0 +1,25 @@
+.modalContainer {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(#000, 0.5);
+  z-index: 101;
+}
+
+.modal {
+  min-width: 30rem;
+  max-width: 85%;
+  max-height: 80%;
+  min-height: 30rem;
+
+  @media (min-width: 60rem) {
+    min-width: 50rem;
+    max-width: 80rem;
+  }
+}
+
+.modalClose {
+  top: 1rem;
+  right: 1rem;
+}

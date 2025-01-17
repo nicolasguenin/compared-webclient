@@ -1,0 +1,14 @@
+@keyframes skeleton {
+  0% {
+    background-position: -46.8rem 0;
+  }
+  100% {
+    background-position: 46.8rem 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(to right, var(--neutral-100) 8%, var(--neutral-200) 18%, var(--neutral-100) 33%);
+  background-size: 80rem 10rem;
+  animation: skeleton 2s infinite ease-out;
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@cpd/ui",
+  "version": "1.0.0",
+  "license": "ISC",
+  "devDependencies": {
+    "@cpd/eslint": "^1.0.0",
+    "@cpd/style": "^1.0.0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1"
+  }
+}

@@ -1,0 +1,15 @@
+@keyframes loaderRotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  width: 1em;
+  height: 1em;
+  stroke-dasharray: 16;
+  animation: 1s loaderRotate infinite linear;
+}
