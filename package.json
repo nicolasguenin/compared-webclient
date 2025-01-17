@@ -4,10 +4,10 @@
   "scripts": {
     "dev:web": "npm run dev -w @cpd/web"
   },
-  "author": "Nicolas Guenin",
   "license": "ISC",
   "workspaces": [
-    "apps/web"
+    "apps/web",
+    "configs/eslint"
   ],
   "devDependencies": {
     "@types/node": "^22.10.7",
