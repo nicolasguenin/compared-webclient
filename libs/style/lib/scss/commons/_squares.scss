@@ -1,0 +1,8 @@
+@use '../utils/func';
+
+@each $size in (32, 48, 64, 96, 128) {
+  .is-#{$size}x#{$size} {
+    width: #{func.rem($size)};
+    height: #{func.rem($size)};
+  }
+}

@@ -1,0 +1,73 @@
+@use "sass:map";
+@use "../variables/colors";
+@use "../variables/typos";
+@use '../utils/func';
+
+.text {
+  // Colors
+  @each $name, $color in colors.$colors {
+    @each $variant, $value in $color {
+      @if $variant == 'DEFAULT' {
+        &-#{$name} {
+          color: var(--#{$name});
+        }
+      } @else {
+        &-#{$name}-#{$variant} {
+          color: var(--#{$name}-#{$variant});
+        }
+      }
+    }
+  }
+
+  &-white {
+    color: white;
+  }
+
+  // Font size
+  @each $name, $size in typos.$fsizes {
+    &-#{$name} {
+      $x: map.get($size, 'size');
+      font-size: #{func.em($x)};
+      line-height: #{map.get($size, 'lh')};
+    }
+  }
+
+  //Font weight
+  @each $weight in typos.$fweights {
+    &-#{$weight} {
+      font-weight: #{$weight};
+    }
+  }
+
+  // Alignment
+  @each $pos in ('center', 'left', 'right') {
+    &-#{$pos} {
+      text-align: #{$pos};
+    }
+  }
+
+  // Decoration
+  @each $decoration in ('none', 'underline') {
+    &-decoration-#{$decoration} {
+      text-decoration: #{$decoration};
+    }
+  }
+
+  // Transform
+  @each $transform in ('capitalize', 'uppercase', 'lowercase') {
+    &-#{$transform} {
+      text-transform: #{$transform};
+    }
+  }
+
+  &-nowrap {
+    white-space: nowrap;
+  }
+}
+
+// Line height
+@each $name, $lh in typos.$lhs {
+  .lh-#{$name} {
+    line-height: #{$lh};
+  }
+}

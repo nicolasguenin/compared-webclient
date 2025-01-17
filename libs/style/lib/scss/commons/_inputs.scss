@@ -1,0 +1,27 @@
+@use '../utils/func';
+
+.field {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: func.rem(8);
+  font-weight: 600;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  border: solid func.rem(1) var(--neutral-300);
+  border-radius: func.rem(6);
+  box-sizing: border-box;
+  font-size: func.em(14);
+}
+
+.textarea {
+  min-height: func.rem(150);
+  resize: vertical;
+}

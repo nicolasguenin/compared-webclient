@@ -1,0 +1,20 @@
+@use "../utils/func";
+
+.mobile {
+  &-container {
+    width: 100%;
+    height: 100vh;
+    background-color: #E8EBF4;
+    overflow: hidden;
+  }
+
+  &-content {
+    width: func.rem(375);
+    height: func.rem(667);
+    border-radius: 2rem;
+    background-color: #fff;
+    box-shadow: 0 func.rem(2) func.rem(10) rgba(#000, .2);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}

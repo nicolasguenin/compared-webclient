@@ -1,0 +1,5 @@
+@each $fit in ('cover', 'contain', 'scale-down') {
+  .img-#{$fit} {
+    object-fit: #{$fit};
+  }
+}

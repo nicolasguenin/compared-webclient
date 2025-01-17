@@ -1,0 +1,23 @@
+@use '../variables/colors';
+
+@each $name, $color in colors.$colors {
+  @each $variant, $value in $color {
+    @if $variant == 'DEFAULT' {
+      .bg-#{$name} {
+        background-color: var(--#{$name});
+      }
+    } @else {
+      .bg-#{$name}-#{$variant} {
+        background-color: var(--#{$name}-#{$variant});
+      }
+    }
+  }
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-transparent {
+  background-color: transparent;
+}

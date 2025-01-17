@@ -1,0 +1,8 @@
+@use "../variables/spaces";
+@use "../utils/func";
+
+@each $name, $space in spaces.$spaces {
+  .gap-#{$name} {
+    gap: #{func.rem($space)};
+  }
+}

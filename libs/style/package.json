@@ -1,0 +1,8 @@
+{
+  "name": "@cpd/style",
+  "version": "1.0.0",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.83.4"
+  }
+}

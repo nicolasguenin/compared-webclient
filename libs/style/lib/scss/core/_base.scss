@@ -1,0 +1,55 @@
+@use "sass:map";
+@use "sass:string";
+@use "../variables/animations";
+@use "../variables/colors";
+@use "../variables/typos";
+@use "../utils/func";
+
+html {
+  font-size: calc(0.625 * 1em);
+}
+
+body {
+  font-size: 1.6em;
+  color: var(--neutral);
+}
+
+figure {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--neutral);
+  transition: animations.$default-transition;
+
+  &:hover {
+    color: var(--primary);
+  }
+}
+
+p {
+  margin-top: 0;
+}
+
+$titles: (
+  1: map.get(typos.$fsizes, '2xl'),
+  2: map.get(typos.$fsizes, xl),
+  3: map.get(typos.$fsizes, lg),
+  4: map.get(typos.$fsizes, md),
+  5: map.get(typos.$fsizes, default),
+  6: map.get(typos.$fsizes, sm),
+);
+
+@each $type, $values in $titles {
+  h#{$type} {
+    font-size: func.em(map.get($values, size));
+    line-height: string.unquote(map.get($values, lh));
+  }
+}
+
+

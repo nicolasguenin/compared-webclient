@@ -1,0 +1,13 @@
+@each $display in ('block', 'inline-block', 'grid', 'inline', 'none') {
+  .#{$display} {
+    display: #{$display};
+  }
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}

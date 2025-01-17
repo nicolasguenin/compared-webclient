@@ -1,0 +1,113 @@
+@use 'sass:string';
+@use 'sass:map';
+
+$flex-display-properties: (
+    'flex',
+);
+
+$flex-direction-properties: (
+    'row',
+    'column',
+    'row-reverse',
+    'column-reverse',
+);
+
+$flex-wrap-properties: (
+    'wrap',
+    'nowrap',
+);
+
+$flex-align-items-properties: (
+    'center',
+    'flex-start',
+    'flex-end',
+    'stretch',
+    'baseline',
+);
+
+$flex-justify-content-properties: (
+    'center',
+    'flex-start',
+    'flex-end',
+    'space-between',
+    'space-around',
+    'space-evenly',
+);
+
+$flex-properties: (
+    (
+        'name'      : '',
+        'style'     : 'display',
+        'properties': $flex-display-properties,
+    ),
+    (
+        'name'      : 'dir',
+        'style'     : 'flex-direction',
+        'properties': $flex-direction-properties,
+    ),
+    (
+        'name'      : 'wrap',
+        'style'     : 'flex-wrap',
+        'properties': $flex-wrap-properties,
+    ),
+    (
+        'name'      : 'align',
+        'style'     : 'align-items',
+        'properties': $flex-align-items-properties,
+    ),
+    (
+        'name'      : 'justify',
+        'style'     : 'justify-content',
+        'properties': $flex-justify-content-properties,
+    ),
+);
+
+.flex {
+    @each $item in $flex-properties {
+        $name      : map.get($item, 'name');
+        $style     : map.get($item, 'style');
+        $properties: map.get($item, 'properties');
+
+        @each $property in $properties {
+            @if $name != '' {
+                &-#{$name}-#{$property} {
+                    #{$style}: string.unquote($property);
+                }
+            } @else {
+                & {
+                    #{$style}: string.unquote($property);
+                }
+            }
+        }
+    }
+}
+
+$m-align: (
+    'top',
+    'left',
+    'bottom',
+    'right',
+);
+
+@each $value in $m-align {
+    .--m-auto-#{$value} {
+        margin-#{$value}: auto;
+    }
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
+
+.flex-shrink {
+    flex-shrink: 1;
+}
+
+.flex-grow-0 {
+    flex-grow: 0;
+}
+
+.flex-shrink-0 {
+    flex-shrink: 0;
+}
+

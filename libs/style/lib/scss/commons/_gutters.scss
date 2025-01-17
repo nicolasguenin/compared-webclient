@@ -1,0 +1,71 @@
+@use '../variables/spaces';
+@use '../utils/func';
+
+$gutters: (
+  'mx': (
+    'margin-left',
+    'margin-right',
+  ),
+  'my': (
+    'margin-top',
+    'margin-bottom',
+  ),
+  'mt': (
+    'margin-top',
+  ),
+  'mb': (
+    'margin-bottom',
+  ),
+  'ml': (
+    'margin-left',
+  ),
+  'mr': (
+    'margin-right',
+  ),
+  'm': (
+    'margin',
+  ),
+  'px': (
+    'padding-left',
+    'padding-right',
+  ),
+  'py': (
+    'padding-top',
+    'padding-bottom',
+  ),
+  'pt': (
+    'padding-top',
+  ),
+  'pb': (
+    'padding-bottom',
+  ),
+  'pl': (
+    'padding-left',
+  ),
+  'pr': (
+    'padding-right',
+  ),
+  'p': (
+    'padding',
+  )
+);
+
+// Spaces
+@each $prefix, $properties in $gutters {
+  @each $name, $value in spaces.$spaces {
+    .#{$prefix}-#{$name} {
+      @each $property in $properties {
+        #{$property}: #{func.rem($value)};
+      }
+    }
+  }
+}
+
+// Spaces auto
+@each $prefix, $properties in $gutters {
+  .#{$prefix}-auto {
+    @each $property in $properties {
+      #{$property}: auto;
+    }
+  }
+}

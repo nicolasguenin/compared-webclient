@@ -1,0 +1,52 @@
+@use '../utils/func';
+@use '../variables/colors';
+
+@each $name, $size in (0: 0, sm: 4, md: 6, lg: 8) {
+  .rounded-#{$name} {
+    border-radius: func.rem($size);
+  }
+}
+
+.rounded-full {
+  border-radius: 50%;
+}
+
+$bpositions: (
+  'top',
+  'left',
+  'right',
+  'bottom',
+);
+@each $position in $bpositions {
+  .border-#{$position} {
+    border-#{$position}: solid func.rem(1) var(--neutral);
+  }
+}
+
+.bordered {
+  border: solid func.rem(1) var(--neutral);
+}
+
+@each $name, $color in colors.$colors {
+  @each $variant, $value in $color {
+    @if $variant == 'DEFAULT' {
+      .border-#{$name} {
+        border-color: var(--#{$name});
+      }
+    } @else {
+      .border-#{$name}-#{$variant} {
+        border-color: var(--#{$name}-#{$variant});
+      }
+    }
+  }
+}
+
+.border-transparent {
+  border-color: transparent;
+}
+
+.border-none {
+  border: none;
+}
+
+

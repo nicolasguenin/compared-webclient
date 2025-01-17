@@ -1,0 +1,17 @@
+@use '../utils/func';
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+@each $size in (16, 20, 24, 28, 32, 36, 42, 48) {
+  .icon-#{$size} {
+    width: #{func.em($size)};
+    height: #{func.em($size)};
+  }
+}

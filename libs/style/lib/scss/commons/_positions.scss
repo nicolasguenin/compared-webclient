@@ -1,0 +1,19 @@
+@each $pos in ('relative', 'fixed', 'absolute', 'sticky') {
+  .#{$pos} {
+    position: #{$pos};
+  }
+}
+
+.centered-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.centered-fixed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

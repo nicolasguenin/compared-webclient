@@ -1,0 +1,34 @@
+.overflow {
+  @each $overflow in ('hidden', 'auto', 'scroll') {
+    &-#{$overflow} {
+      overflow: #{$overflow};
+    }
+
+    &-x-#{$overflow} {
+      overflow-x: #{$overflow};
+    }
+
+    &-y-#{$overflow} {
+      overflow-y: #{$overflow};
+    }
+  }
+}
+
+.cursor {
+  @each $cursor in ('not-allowed', 'pointer') {
+    &-#{$cursor} {
+      cursor: #{$cursor};
+    }
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
