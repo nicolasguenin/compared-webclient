@@ -13,7 +13,9 @@
     "configs/eslint",
     "libs/style",
     "libs/ui",
-    "libs/helpers"
+    "libs/helpers",
+    "libs/features",
+    "libs/entities"
   ],
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",

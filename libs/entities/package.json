@@ -1,0 +1,12 @@
+{
+  "name": "@cpd/entities",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "vitest"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@cpd/eslint": "^1.0.0",
+    "eslint": "^9.18.0"
+  }
+}
