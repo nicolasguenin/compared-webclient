@@ -9,6 +9,10 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@cpd/entities": "^1.0.0",
+    "@cpd/features": "^1.0.0",
+    "@cpd/helpers": "^1.0.0",
+    "@cpd/shared": "^1.0.0",
     "@cpd/ui": "^1.0.0",
     "next": "15.1.4",
     "react": "^19.0.0",
