@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { type ComponentPropsWithoutRef } from 'react';
 import styles from './Loader.module.scss';
-import {Symbol} from '../Symbol';
+import { Symbol } from '../Symbol';
 
 const Loader = ({ className }: ComponentPropsWithoutRef<'svg'>) => {
   const loaderClassName = clsx(
@@ -11,7 +11,10 @@ const Loader = ({ className }: ComponentPropsWithoutRef<'svg'>) => {
 
   return (
     <div className={className}>
-      <Symbol className={loaderClassName} name='spinner' />
+      <Symbol
+        className={loaderClassName}
+        name='spinner'
+      />
     </div>
   );
 };

@@ -1,12 +1,9 @@
 import { useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import styles from '../styles/Toast.module.scss';
-import {Symbol} from '../../Symbol';
+import { Symbol } from '../../Symbol';
 import type { IIcon } from '../../../types';
-import type {
-  IToast,
-  IToastState,
-} from '../interfaces/Toast.interface';
+import type { IToast, IToastState } from '../interfaces/Toast.interface';
 import { useToast } from '../context/ToastProvider';
 import ToastProgress from './ToastProgress';
 
@@ -73,10 +70,16 @@ const Toast = ({ id, message, type }: IToast) => {
       onMouseLeave={handleBlur}
     >
       <div className='flex flex-align-center gap-0-5'>
-        <Symbol name={icons[type]} size={32} />
+        <Symbol
+          name={icons[type]}
+          size={32}
+        />
         <p className='my-0'>{message}</p>
       </div>
-      <ToastProgress ref={progressRef} type={type} />
+      <ToastProgress
+        ref={progressRef}
+        type={type}
+      />
     </div>
   );
 };

@@ -3,9 +3,9 @@ import { ComponentPropsWithoutRef } from 'react';
 import styles from './Skeleton.module.scss';
 
 type SkeletonProps = ComponentPropsWithoutRef<'div'> & {
-    rounded?: 'none' | 'default' | 'full';
-    height: string;
-    width: string;
+  rounded?: 'none' | 'default' | 'full';
+  height: string;
+  width: string;
 };
 
 const Skeleton = ({
@@ -15,20 +15,23 @@ const Skeleton = ({
   rounded = 'default',
   width,
 }: SkeletonProps) => {
-    const rootClassName = clsx(
-        className,
-        {
-            'rounded-md': rounded === 'default',
-            'rounded-full': rounded === 'full',
-        },
-        styles.skeleton
-    );
+  const rootClassName = clsx(
+    className,
+    {
+      'rounded-md': rounded === 'default',
+      'rounded-full': rounded === 'full',
+    },
+    styles.skeleton
+  );
 
-    return (
-        <div style={{ height, width }} className={rootClassName}>
-            {children}
-        </div>
-    );
+  return (
+    <div
+      style={{ height, width }}
+      className={rootClassName}
+    >
+      {children}
+    </div>
+  );
 };
 
 export default Skeleton;

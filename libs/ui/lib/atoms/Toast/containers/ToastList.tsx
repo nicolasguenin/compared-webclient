@@ -16,7 +16,12 @@ const ToastList = ({ toasts }: IToastListProps) => {
   return (
     <div className={rootClassName}>
       {toasts.map((toast) => {
-        return <Toast key={toast.id} {...toast} />;
+        return (
+          <Toast
+            key={toast.id}
+            {...toast}
+          />
+        );
       })}
     </div>
   );

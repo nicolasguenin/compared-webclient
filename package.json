@@ -2,20 +2,30 @@
   "name": "cpd",
   "version": "1.0.0",
   "scripts": {
-    "dev:web": "npm run dev -w @cpd/web"
+    "dev:web": "npm run dev -w @cpd/web",
+    "test:helpers": "npm run test -w @cpd/helpers",
+    "test:ui": "npm run test -w @cpd/ui",
+    "test:web": "npm run test -w @cpd/web"
   },
   "license": "ISC",
   "workspaces": [
     "apps/web",
     "configs/eslint",
     "libs/style",
-    "libs/ui"
+    "libs/ui",
+    "libs/helpers"
   ],
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.0",
     "@types/node": "^22.10.7",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^26.0.0",
     "typescript": "^5.7.3",
-    "typescript-plugin-css-modules": "^5.1.0"
+    "typescript-plugin-css-modules": "^5.1.0",
+    "vitest": "^3.0.2"
   }
 }

@@ -1,1 +1,7 @@
-export type IColorElement = 'primary' | 'neutral' | 'danger' | 'success' | 'info' | 'warning'
+export type IColorElement =
+  | 'primary'
+  | 'neutral'
+  | 'danger'
+  | 'success'
+  | 'info'
+  | 'warning';

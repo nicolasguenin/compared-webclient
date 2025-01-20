@@ -22,7 +22,10 @@ const Modal = ({ children, className, close, title }: ModalProps) => {
         styles.modalContainer
       )}
     >
-      <dialog open className={rootClassName}>
+      <dialog
+        open
+        className={rootClassName}
+      >
         <Button
           icon='close'
           color='transparent'

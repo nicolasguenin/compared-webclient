@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
-import {Loader} from '../Loader';
-import {Symbol} from '../Symbol';
+import { Loader } from '../Loader';
+import { Symbol } from '../Symbol';
 import styles from './Button.module.scss';
 import type { IColorElement, IIcon } from '../../types';
 
@@ -95,7 +95,10 @@ const Button = <Element extends React.ElementType = typeof defaultElement>(
       {...rest}
     >
       {!!icon && (
-        <Symbol name={icon} className={clsx({ 'mr-0-75': children })} />
+        <Symbol
+          name={icon}
+          className={clsx({ 'mr-0-75': children })}
+        />
       )}
       {children}
       {loading && (

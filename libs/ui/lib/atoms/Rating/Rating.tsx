@@ -9,11 +9,11 @@ type IRatingProps = ComponentPropsWithoutRef<'div'> & {
 };
 
 const Rating = ({
-                  className,
-                  color = 'neutral',
-                  value,
-                  ...rest
-                }: IRatingProps) => {
+  className,
+  color = 'neutral',
+  value,
+  ...rest
+}: IRatingProps) => {
   const rootClassName = clsx('flex', `text-${color}`, className);
 
   let hasDecimal = value % 1 !== 0;
@@ -24,7 +24,12 @@ const Rating = ({
   const getPlainStars = () => {
     const res = [];
     for (let i = 0; i < plainStars; i++) {
-      res.push(<Symbol key={`plain-${i}`} name='star' />);
+      res.push(
+        <Symbol
+          key={`plain-${i}`}
+          name='star'
+        />
+      );
     }
     return res;
   };
@@ -32,12 +37,20 @@ const Rating = ({
   const getEmptyStars = () => {
     const res = [];
     for (let i = 0; i < emptyStars; i++) {
-      res.push(<Symbol key={`empty-${i}`} name='star-outline' />);
+      res.push(
+        <Symbol
+          key={`empty-${i}`}
+          name='star-outline'
+        />
+      );
     }
     return res;
   };
   return (
-    <div className={rootClassName} {...rest}>
+    <div
+      className={rootClassName}
+      {...rest}
+    >
       {getPlainStars()}
 
       {hasDecimal && <Symbol name='star-half-full' />}
