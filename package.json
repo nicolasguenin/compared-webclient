@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "scripts": {
     "dev:web": "npm run dev -w @cpd/web",
-    "test:helpers": "npm run test -w @cpd/helpers",
-    "test:ui": "npm run test -w @cpd/ui",
-    "test:web": "npm run test -w @cpd/web"
+    "test:features": "vitest --project features",
+    "test:entities": "vitest --project entities",
+    "test:helpers": "vitest --project helpers",
+    "test:shared": "vitest --project shared",
+    "test:ui": "vitest --project ui"
   },
   "license": "ISC",
   "workspaces": [
@@ -15,7 +17,8 @@
     "libs/ui",
     "libs/helpers",
     "libs/features",
-    "libs/entities"
+    "libs/entities",
+    "libs/shared"
   ],
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
