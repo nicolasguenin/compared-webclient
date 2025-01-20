@@ -1,6 +1,7 @@
 'use client';
 
 export * from './Button';
+export * from './Hero';
 export * from './Input';
 export * from './List';
 export * from './Loader';
