@@ -9,5 +9,8 @@
   "devDependencies": {
     "@cpd/eslint": "^1.0.0",
     "eslint": "^9.18.0"
+  },
+  "dependencies": {
+    "@cpd/shared": "^1.0.0"
   }
 }

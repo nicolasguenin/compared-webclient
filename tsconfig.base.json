@@ -15,6 +15,10 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
+      "@cpd/entities/*": ["libs/ui/lib/entities/*"],
+      "@cpd/features/*": ["libs/ui/lib/features/*"],
+      "@cpd/helpers": ["libs/helpers/lib"],
+      "@cpd/shared": ["libs/shared/lib"],
       "@cpd/ui": ["libs/ui/lib/atoms"]
     },
     "plugins": [
