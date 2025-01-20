@@ -2,7 +2,7 @@
   "name": "@cpd/helpers",
   "version": "1.0.0",
   "main": "index.ts",
-  "script": {
+  "scripts": {
     "test": "vitest"
   },
   "devDependencies": {
