@@ -12,6 +12,7 @@ export default function AuthMenu() {
 
   if (isLoggedIn) {
     // Logout button
+    return;
   }
   return (
     !isSignInRoute && (
