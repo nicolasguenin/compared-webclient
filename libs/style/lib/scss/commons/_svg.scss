@@ -1,7 +1,7 @@
-@use '../variables/colors';
+@use '../variables/colors-defs' as *;
 @use '../utils/func';
 
-@each $name, $color in colors.$colors {
+@each $name, $color in $colors {
   @each $variant, $value in $color {
     @if $variant == 'DEFAULT' {
       .fill-#{$name} {

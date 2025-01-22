@@ -1,25 +1,27 @@
 import clsx from 'clsx';
 import React, { ComponentPropsWithoutRef, ReactNode } from 'react';
+import styles from './Hero.module.scss';
 
-interface HeroProps extends ComponentPropsWithoutRef<'div'> {
+interface HeroProps extends ComponentPropsWithoutRef<'header'> {
   left: ReactNode;
   right?: ReactNode;
 }
 
 const Hero = ({ className, left, right, ...rest }: HeroProps) => {
   const rootClassName = clsx(
-    'px-1 py-0-75 flex flex-justify-space-between flex-align-items-center hero',
+    'px-1 py-0-75 flex flex-justify-space-between flex-align-center shadow-sm bg-white hero',
+    styles.hero,
     className
   );
 
   return (
-    <div
+    <header
       className={rootClassName}
       {...rest}
     >
       <div>{left}</div>
       {right && <div>{right}</div>}
-    </div>
+    </header>
   );
 };
 

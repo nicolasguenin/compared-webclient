@@ -1,0 +1,5 @@
+@use 'sass:map';
+
+.body {
+  background-color: map.get($neutral, 100);
+}

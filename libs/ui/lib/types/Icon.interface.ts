@@ -11,6 +11,7 @@ export type IIcon =
   | 'card-account-details'
   | 'cellphone'
   | 'check-circle'
+  | 'check-circle-outline'
   | 'close'
   | 'close-circle'
   | 'dribble'

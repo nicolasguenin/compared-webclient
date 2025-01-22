@@ -1,0 +1,14 @@
+@use '../variables/colors-defs' as *;
+@use 'sass:map';
+
+.shadow-sm {
+  box-shadow: 0 0.2rem 2rem rgba(map.get($neutral, 'DEFAULT'), 0.1);
+}
+
+.shadow-md {
+  box-shadow: 0 0.4rem 2rem rgba(map.get($neutral, 'DEFAULT'), 0.1);
+}
+
+.shadow-lg {
+  box-shadow: 0 0.6rem 2rem rgba(map.get($neutral, 'DEFAULT'), 0.1);
+}

@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
+import { Symbol } from '../Symbol';
 
 type ComponentProps = {};
 
@@ -12,7 +13,6 @@ type PolymorphicProps<
     errorMessage?: string;
     inputClassName?: string;
     type?: 'text' | 'password' | 'number' | 'email' | 'tel' | 'search';
-    value: string;
   };
 
 const defaultElement = 'input';
@@ -27,7 +27,6 @@ const Input = <Element extends React.ElementType = typeof defaultElement>(
     errorMessage,
     inputClassName,
     type = 'text',
-    value,
     ...rest
   } = props;
 
@@ -39,17 +38,6 @@ const Input = <Element extends React.ElementType = typeof defaultElement>(
     inputClassName
   );
 
-  const [dirty, setDirty] = useState(false);
-  const previousValue = useRef(value);
-
-  useEffect(() => {
-    if (previousValue.current !== value && !dirty) {
-      setDirty(true);
-    }
-
-    previousValue.current = value;
-  }, [value, dirty]);
-
   return (
     <label className={rootClassName}>
       <span className='label'>{children}</span>
@@ -58,8 +46,15 @@ const Input = <Element extends React.ElementType = typeof defaultElement>(
         className={rootInputClassName}
         {...rest}
       />
-      {errorMessage && dirty && (
-        <p className='mt-0-5 text-sm text-600 text-danger'>{errorMessage}</p>
+      {errorMessage && (
+        <p className='mt-0-5 text-tn text-600 text-danger'>
+          <Symbol
+            name={'alert-circle'}
+            size={20}
+            className={'mr-0-25'}
+          />
+          {errorMessage}
+        </p>
       )}
     </label>
   );
