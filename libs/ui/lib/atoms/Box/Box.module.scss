@@ -1,0 +1,7 @@
+@use '@cpd/style/lib/scss/utils/func';
+
+@each $size in (300, 450, 750, 1024, 1200) {
+  .boxSize-#{$size} {
+    max-width: func.rem($size);
+  }
+}

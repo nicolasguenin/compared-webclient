@@ -34,7 +34,7 @@
 }
 
 @each $name in ('primary', 'neutral', 'success', 'warning', 'danger', 'info') {
-  .button-#{$name}:not(.buttonLoading):not([disabled]) {
+  .button-#{$name}:not(.buttonLoading):not([disabled]):not(.buttonLink):not(.buttonText) {
     &:hover {
       background-color: var(--#{$name}-600);
     }
@@ -77,6 +77,10 @@
   &:not(.block) {
     padding-right: func.rem(35);
   }
+}
+
+.buttonLink:hover {
+  text-decoration: none;
 }
 
 .buttonRounded {

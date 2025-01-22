@@ -10,6 +10,7 @@ type ComponentProps = {
   color?: IColorElement | 'transparent';
   disabled?: boolean;
   icon?: IIcon;
+  link?: boolean;
   loading?: boolean;
   lowercase?: boolean;
   minWidth?: boolean;
@@ -40,8 +41,9 @@ const Button = <Element extends React.ElementType = typeof defaultElement>(
     color = 'neutral',
     disabled,
     icon = '',
+    link = false,
     loading = false,
-    lowercase = false,
+    lowercase = true,
     minWidth = false,
     outline = false,
     rounded = true,
@@ -50,20 +52,26 @@ const Button = <Element extends React.ElementType = typeof defaultElement>(
     ...rest
   } = props;
 
-  const getColor = (color: IColorElement | 'transparent', outline: boolean) => {
-    return `${outline || color === 'transparent' ? color : 'white'}`;
+  const getColor = (
+    color: IColorElement | 'transparent',
+    outline: boolean,
+    text: boolean,
+    link: boolean
+  ) => {
+    return `${outline || color === 'transparent' || text || link ? color : 'white'}`;
   };
 
   const getBackgroundColor = (
     color: IColorElement | 'transparent',
     outline: boolean,
-    text: boolean
+    text: boolean,
+    link: boolean
   ) => {
     if (outline) {
       return 'bg-white';
     }
 
-    if (color === 'transparent' || text) {
+    if (color === 'transparent' || text || link) {
       return 'bg-transparent';
     }
 
@@ -75,12 +83,15 @@ const Button = <Element extends React.ElementType = typeof defaultElement>(
     { 'w-full': block },
     { 'rounded-md': rounded },
     { [styles.buttonRounded]: roundedFull },
-    getBackgroundColor(color, outline, text),
-    `text-${getColor(color, outline)}`,
+    getBackgroundColor(color, outline, text, link),
+    `text-${getColor(color, outline, text, link)}`,
     'relative inline-block py-0-75 px-1 text-sm text-600 lh-default bordered',
-    { 'text-uppercase': !lowercase },
     outline ? `border-${color} ${styles.outline}` : 'border-transparent',
-    `text-decoration-${text ? 'underline' : 'none'}`,
+    `text-decoration-${link ? 'underline' : 'none'}`,
+    { 'text-uppercase': !lowercase },
+    { [styles.buttonText]: text },
+    { [styles.buttonLink]: link },
+    'btn',
     styles.button,
     styles[`button-${color}`],
     { [styles.buttonLoading]: loading },
