@@ -11,6 +11,8 @@
     "eslint": "^9.18.0"
   },
   "dependencies": {
-    "@cpd/shared": "^1.0.0"
+    "@cpd/helpers": "^1.0.0",
+    "@cpd/shared": "^1.0.0",
+    "clsx": "^2.1.1"
   }
 }
