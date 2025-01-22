@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  font-size: 1.6em;
+  font-size: 1.5em;
   color: var(--neutral);
 }
 
@@ -23,7 +23,7 @@ img {
   height: auto;
 }
 
-a {
+a:not(.btn) {
   color: var(--neutral);
   transition: animations.$default-transition;
 
@@ -46,10 +46,15 @@ $titles: (
 );
 
 @each $type, $values in $titles {
-  h#{$type} {
+  h#{$type}, .h#{$type} {
     font-size: func.em(map.get($values, size));
     line-height: string.unquote(map.get($values, lh));
+    font-weight: 600;
   }
+}
+
+* {
+  box-sizing: border-box;
 }
 
 

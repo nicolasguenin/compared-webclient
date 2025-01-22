@@ -1,11 +1,11 @@
 @use "sass:map";
-@use "../variables/colors";
+@use "../variables/colors-defs" as *;
 @use "../variables/typos";
 @use '../utils/func';
 
 .text {
   // Colors
-  @each $name, $color in colors.$colors {
+  @each $name, $color in $colors {
     @each $variant, $value in $color {
       @if $variant == 'DEFAULT' {
         &-#{$name} {

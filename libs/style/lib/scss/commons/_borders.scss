@@ -1,5 +1,5 @@
 @use '../utils/func';
-@use '../variables/colors';
+@use '../variables/colors-defs' as *;
 
 @each $name, $size in (0: 0, sm: 4, md: 6, lg: 8) {
   .rounded-#{$name} {
@@ -27,7 +27,7 @@ $bpositions: (
   border: solid func.rem(1) var(--neutral);
 }
 
-@each $name, $color in colors.$colors {
+@each $name, $color in $colors {
   @each $variant, $value in $color {
     @if $variant == 'DEFAULT' {
       .border-#{$name} {
