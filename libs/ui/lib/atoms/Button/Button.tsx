@@ -7,6 +7,7 @@ import type { IColorElement, IIcon } from '../../types';
 
 type ComponentProps = {
   block?: boolean;
+  border?: boolean;
   color?: IColorElement | 'transparent';
   disabled?: boolean;
   icon?: IIcon;
@@ -17,6 +18,7 @@ type ComponentProps = {
   outline?: boolean;
   rounded?: boolean;
   roundedFull?: boolean;
+  size?: 'tn' | 'xs' | 'sm' | 'default' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
   text?: boolean;
 };
 
@@ -36,6 +38,7 @@ const Button = <Element extends React.ElementType = typeof defaultElement>(
   const {
     as: Component = defaultElement,
     block = false,
+    border = true,
     children,
     className,
     color = 'neutral',
@@ -48,6 +51,7 @@ const Button = <Element extends React.ElementType = typeof defaultElement>(
     outline = false,
     rounded = true,
     roundedFull = false,
+    size,
     text = false,
     ...rest
   } = props;
@@ -86,9 +90,11 @@ const Button = <Element extends React.ElementType = typeof defaultElement>(
     getBackgroundColor(color, outline, text, link),
     `text-${getColor(color, outline, text, link)}`,
     'relative inline-block py-0-75 px-1 text-sm text-600 lh-default bordered',
-    outline ? `border-${color} ${styles.outline}` : 'border-transparent',
+    { [styles.outline]: outline },
+    outline && border ? `border-${color}` : 'border-transparent',
     `text-decoration-${link ? 'underline' : 'none'}`,
     { 'text-uppercase': !lowercase },
+    size && `text-${size}`,
     { [styles.buttonText]: text },
     { [styles.buttonLink]: link },
     'btn',

@@ -23,6 +23,10 @@
     color: white;
   }
 
+  &-transparent {
+    color: var(--neutral);
+  }
+
   // Font size
   @each $name, $size in typos.$fsizes {
     &-#{$name} {
