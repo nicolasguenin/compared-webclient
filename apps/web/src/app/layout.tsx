@@ -2,7 +2,7 @@ import { AuthProvider } from '@cpd/shared';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 import '@cpd/style/src/scss/app.scss';
-import { Hero } from '@cpd/ui';
+import { Box, Hero, ToastProvider } from '@cpd/ui';
 import { Open_Sans } from 'next/font/google';
 import { cookies } from 'next/headers';
 import TanstackProvider from '../providers/TanstackProvider';
@@ -35,14 +35,18 @@ export default async function RootLayout({
     >
       <body className={bodyClasses}>
         <TanstackProvider>
-          <AuthProvider loggedInValue={isLoggedIn}>
-            <Hero
-              className={heroClasses}
-              left={<Logo />}
-              right={<AuthMenu />}
-            ></Hero>
-            <main className='py-2'>{children}</main>
-          </AuthProvider>
+          <ToastProvider>
+            <AuthProvider loggedInValue={isLoggedIn}>
+              <Hero
+                className={heroClasses}
+                left={<Logo />}
+                right={<AuthMenu />}
+              ></Hero>
+              <main>
+                <Box padding={'1-5'}>{children}</Box>
+              </main>
+            </AuthProvider>
+          </ToastProvider>
         </TanstackProvider>
       </body>
     </html>

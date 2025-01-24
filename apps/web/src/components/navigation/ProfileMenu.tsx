@@ -15,7 +15,7 @@ function ProfileMenuInner() {
           <Button
             as={Link}
             block
-            href={'/profile'}
+            href={'/settings/profile'}
             outline
             border={false}
             rounded={false}
