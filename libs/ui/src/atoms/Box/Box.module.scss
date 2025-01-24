@@ -1,4 +1,4 @@
-@use '@cpd/style/lib/scss/utils/func';
+@use '@cpd/style/src/scss/utils/func';
 
 @each $size in (300, 450, 750, 1024, 1200) {
   .boxSize-#{$size} {

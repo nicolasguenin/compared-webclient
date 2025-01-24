@@ -1,4 +1,4 @@
-import { SignInForm } from '@cpd/features/lib/auth';
+import { SignInForm } from '@cpd/widgets/sign-in';
 import clsx from 'clsx';
 import styles from './page.module.scss';
 

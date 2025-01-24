@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
     ];
   },
   sassOptions: {
-    includePaths: [path.join(__dirname, '../../libs/style/lib/scss/variables')],
+    includePaths: [path.join(__dirname, '../../libs/style/src/scss/variables')],
     additionalData: `@use "./colors-defs" as *;`,
   },
 };

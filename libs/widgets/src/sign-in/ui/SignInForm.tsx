@@ -4,9 +4,7 @@ import { Button, Input, Symbol, Text } from '@cpd/ui';
 import { Box } from '@cpd/ui';
 import clsx from 'clsx';
 import { ComponentPropsWithoutRef, useActionState } from 'react';
-import { signIn } from '../api/signIn';
-import { useAuth } from '../contexts/AuthProvider';
-import type { SignInError } from '../types/SignIn.interface';
+import { signIn, useAuth, SignInError } from '@cpd/shared';
 
 const SignInFormInner = () => {
   const { isLoggedIn, setIsLoggedIn } = useAuth();

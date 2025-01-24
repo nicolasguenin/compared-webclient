@@ -1,27 +1,9 @@
 'use client';
 
-import {
-  createContext,
-  FC,
-  ReactNode,
-  useCallback,
-  useContext,
-  useState,
-} from 'react';
+import { FC, ReactNode, useCallback, useState } from 'react';
+import { AuthContext } from '../contexts';
 
-type IAuthContext = {
-  isLoggedIn: boolean;
-  setIsLoggedIn: (isLoggedIn: boolean) => void;
-};
-
-export const AuthContext = createContext<IAuthContext>({
-  isLoggedIn: false,
-  setIsLoggedIn: () => {},
-});
-
-export const useAuth = (): IAuthContext => useContext(AuthContext);
-
-export const AuthProvider: FC<{
+const AuthProvider: FC<{
   children: ReactNode;
   loggedInValue: boolean;
 }> = ({ children, loggedInValue }) => {
@@ -40,3 +22,5 @@ export const AuthProvider: FC<{
     </AuthContext.Provider>
   );
 };
+
+export default AuthProvider;

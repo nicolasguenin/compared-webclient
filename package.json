@@ -18,7 +18,8 @@
     "libs/helpers",
     "libs/features",
     "libs/entities",
-    "libs/shared"
+    "libs/shared",
+    "libs/widgets"
   ],
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
