@@ -1,5 +1,5 @@
 import { Box, Button } from '@cpd/ui';
-import List from '@cpd/ui/lib/atoms/List';
+import { List } from '@cpd/ui';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useState } from 'react';
