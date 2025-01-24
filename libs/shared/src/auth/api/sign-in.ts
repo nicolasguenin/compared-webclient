@@ -1,7 +1,7 @@
 import { api } from '@cpd/shared';
-import { SignInPayload, SignInResponse } from '../types/SignIn.interface';
+import { SignInPayload, SignInResponse } from '../types';
 
-export const signIn = async (payload: SignInPayload) => {
+export default async function signIn(payload: SignInPayload) {
   return api.post<SignInResponse>('/signin', payload).catch((err) => {
     if (err?.response?.data) {
       throw {
@@ -16,4 +16,4 @@ export const signIn = async (payload: SignInPayload) => {
       payload,
     };
   });
-};
+}

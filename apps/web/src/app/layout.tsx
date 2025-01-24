@@ -1,7 +1,7 @@
-import { AuthProvider } from '@cpd/features/lib/auth/contexts/AuthProvider';
+import { AuthProvider } from '@cpd/shared';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
-import '@cpd/style/lib/scss/app.scss';
+import '@cpd/style/src/scss/app.scss';
 import { Hero } from '@cpd/ui';
 import { Open_Sans } from 'next/font/google';
 import { cookies } from 'next/headers';

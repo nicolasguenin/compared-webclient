@@ -15,10 +15,11 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@cpd/entities/*": ["libs/ui/lib/entities/*"],
-      "@cpd/helpers": ["libs/helpers/lib"],
-      "@cpd/shared": ["libs/shared/lib"],
-      "@cpd/ui": ["libs/ui/lib/atoms"]
+      "@cpd/entities/*": ["libs/ui/srd/entities/*"],
+      "@cpd/helpers": ["libs/helpers/src"],
+      "@cpd/shared": ["libs/shared/src"],
+      "@cpd/ui": ["libs/ui/src/atoms"],
+      "@cpd/widgets/*": ["libs/widgets/src/*"]
     },
     "plugins": [
       {

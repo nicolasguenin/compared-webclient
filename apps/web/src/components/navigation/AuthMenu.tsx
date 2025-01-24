@@ -1,6 +1,6 @@
 'use client';
 
-import { useAuth } from '@cpd/features/lib/auth/contexts/AuthProvider';
+import { useAuth } from '@cpd/shared';
 import { Button } from '@cpd/ui';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

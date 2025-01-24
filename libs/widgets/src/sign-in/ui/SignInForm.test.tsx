@@ -2,11 +2,11 @@ import { render, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 import { http, HttpResponse } from 'msw';
 import { beforeEach, vi } from 'vitest';
+import useAuth from '../../../../shared/src/auth/hooks/useAuth';
 import { server } from '../../../mocks/server';
 import SignInForm from './SignInForm';
-import { useAuth } from '../contexts/AuthProvider';
 
-vi.mock('../contexts/AuthProvider');
+vi.mock('../../../../shared/src/auth/hooks/useAuth');
 
 describe('SignInForm', () => {
   let user: UserEvent;
