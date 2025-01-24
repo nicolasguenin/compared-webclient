@@ -1,5 +1,10 @@
 import clsx from 'clsx';
-import React, { ComponentPropsWithoutRef, ReactNode } from 'react';
+import React, {
+  ComponentPropsWithoutRef,
+  ReactNode,
+  useEffect,
+  useState,
+} from 'react';
 import styles from './Hero.module.scss';
 
 interface HeroProps extends ComponentPropsWithoutRef<'header'> {
