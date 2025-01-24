@@ -1,4 +1,5 @@
 export type IIcon =
+  | 'account-circle'
   | 'alert'
   | 'alert-circle'
   | 'arrow-down'

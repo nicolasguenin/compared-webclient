@@ -4,7 +4,7 @@ export * from './Box';
 export * from './Button';
 export * from './Hero';
 export * from './Input';
-export * from './List';
+export { default as List } from './List';
 export * from './Loader';
 export * from './Modal';
 export * from './Rating';

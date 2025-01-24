@@ -5,6 +5,7 @@ import '@cpd/style/lib/scss/app.scss';
 import { Hero } from '@cpd/ui';
 import { Open_Sans } from 'next/font/google';
 import { cookies } from 'next/headers';
+import TanstackProvider from '../providers/TanstackProvider';
 import styles from './layout.module.scss';
 import Logo from '../components/logo/Logo';
 import AuthMenu from '../components/navigation/AuthMenu';
@@ -25,6 +26,7 @@ export default async function RootLayout({
   const isLoggedIn = !!cookieStore.get('authToken')?.value;
 
   const bodyClasses = clsx(fontFamily.className, styles.body);
+  const heroClasses = clsx('sticky', styles.hero);
 
   return (
     <html
@@ -32,13 +34,16 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className={bodyClasses}>
-        <AuthProvider loggedInValue={isLoggedIn}>
-          <Hero
-            left={<Logo />}
-            right={<AuthMenu />}
-          ></Hero>
-          <main className='py-2'>{children}</main>
-        </AuthProvider>
+        <TanstackProvider>
+          <AuthProvider loggedInValue={isLoggedIn}>
+            <Hero
+              className={heroClasses}
+              left={<Logo />}
+              right={<AuthMenu />}
+            ></Hero>
+            <main className='py-2'>{children}</main>
+          </AuthProvider>
+        </TanstackProvider>
       </body>
     </html>
   );
