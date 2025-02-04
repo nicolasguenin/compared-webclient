@@ -1,12 +1,22 @@
 'use client';
 
-import {
-  CurrentUserBoard,
-  useCurrentUser,
-} from '@cpd/entities/src/currentUser';
-import CurrentUserBoardUpdate from '@cpd/entities/src/currentUser/ui/CurrentUserBoardUpdate';
+import { useCurrentUser } from '@cpd/entities/src/currentUser';
+import CurrentUserBoardSkeleton from '@cpd/entities/src/currentUser/ui/CurrentUserBoardSkeleton';
 import { Box, Button, Text, useToast } from '@cpd/ui';
-import React, { ComponentPropsWithoutRef, ReactNode, useState } from 'react';
+import React, {
+  ComponentPropsWithoutRef,
+  ReactNode,
+  useState,
+  lazy,
+} from 'react';
+
+const CurrentUserBoardUpdate = lazy(
+  () => import('@cpd/entities/src/currentUser/ui/CurrentUserBoardUpdate')
+);
+
+const CurrentUserBoard = lazy(
+  () => import('@cpd/entities/src/currentUser/ui/CurrentUserBoard')
+);
 
 const ControlContainer = ({ children }: { children: ReactNode }) => {
   return (
@@ -39,7 +49,7 @@ const CurrentProfileBoard = ({
 
   const getBoardRender = () => {
     if (isLoading) {
-      return <Text>Loading...</Text>;
+      return <CurrentUserBoardSkeleton />;
     }
     if (currentUser) {
       if (!isEditable) {
@@ -66,6 +76,9 @@ const CurrentProfileBoard = ({
         );
       }
     }
+    return (
+      <Text>Oops, an error occurred when retrieving your information.</Text>
+    );
   };
 
   return (

@@ -2,7 +2,8 @@ import { Box, Button } from '@cpd/ui';
 import { List } from '@cpd/ui';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import styles from './ProfileMenu.module.scss';
 
 function ProfileMenuInner() {
@@ -30,6 +31,11 @@ function ProfileMenuInner() {
 
 export default function ProfileMenu() {
   const [displayProfileMenu, setDisplayProfileMenu] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setDisplayProfileMenu(false);
+  }, [pathname]);
 
   return (
     <Box>
