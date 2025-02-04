@@ -8,5 +8,8 @@
   "devDependencies": {
     "@cpd/eslint": "^1.0.0"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dayjs": "^1.11.13"
+  }
 }

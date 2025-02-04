@@ -1,9 +1,11 @@
 import clsx from 'clsx';
 import { ComponentPropsWithoutRef } from 'react';
-import { type IColorElement, SpaceValue } from '../../types';
+import { IColor, SpaceValue } from '../../types';
 
 type ComponentProps = {
-  color?: IColorElement | 'white';
+  bold?: boolean;
+  color?: IColor | 'white';
+  light?: boolean;
   lineHeight?: 'xs' | 'sm' | 'default' | 'md' | 'lg';
   margin?: SpaceValue;
   marginTop?: SpaceValue;
@@ -51,8 +53,10 @@ const defaultElement = 'p';
 
 export default function Text({
   as: Component = defaultElement,
+  bold,
   className,
   color,
+  light = false,
   lineHeight,
   margin,
   marginTop,
@@ -121,9 +125,20 @@ export default function Text({
     return classes;
   };
 
+  const getColor = (color: IColor | 'white' | undefined, light: boolean) => {
+    if (!color && !light) {
+      return null;
+    }
+    if (!color && light) {
+      return 'text-neutral-400';
+    }
+    return light ? `text-${color}-400` : `text-${color}`;
+  };
+
   const rootClassName = clsx(
     'text',
-    color && `text-${color}`,
+    bold && !weight && 'text-600',
+    getColor(color, light),
     lineHeight && `lh-${lineHeight}`,
     nowrap && 'text-nowrap',
     size && `text-${size}`,

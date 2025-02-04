@@ -6,3 +6,13 @@
     gap: #{func.rem($space)};
   }
 }
+
+@for $i from 1 through 4 {
+  .grid-col-#{$i} {
+    grid-template-columns: repeat(#{$i}, 1fr);
+  }
+
+  .grid-row-#{$i} {
+    grid-column: 1 / span #{$i};
+  }
+}

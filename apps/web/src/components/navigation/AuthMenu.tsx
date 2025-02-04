@@ -1,9 +1,10 @@
 'use client';
 
 import { useAuth } from '@cpd/shared';
-import { Button } from '@cpd/ui';
+import { Box, Button } from '@cpd/ui';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import ProfileMenu from './ProfileMenu';
 
 export default function AuthMenu() {
   const { isLoggedIn } = useAuth();
@@ -11,12 +12,15 @@ export default function AuthMenu() {
   const isSignInRoute = pathname === '/signin';
 
   if (isLoggedIn) {
-    // Logout button
-    return;
+    return (
+      <Box>
+        <ProfileMenu />
+      </Box>
+    );
   }
   return (
     !isSignInRoute && (
-      <div>
+      <Box>
         <Button
           as={Link}
           href={'/signin'}
@@ -25,7 +29,7 @@ export default function AuthMenu() {
         >
           Sign in
         </Button>
-      </div>
+      </Box>
     )
   );
 }

@@ -9,7 +9,7 @@ import { signIn, useAuth, SignInError } from '@cpd/shared';
 const SignInFormInner = () => {
   const { isLoggedIn, setIsLoggedIn } = useAuth();
 
-  const onSubmit = async (previousState: unknown, formData: FormData) => {
+  const onSubmit = (previousState: unknown, formData: FormData) => {
     const email = formData.get('email');
     const password = formData.get('password');
 

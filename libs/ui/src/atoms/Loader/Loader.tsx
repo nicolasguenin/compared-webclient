@@ -5,7 +5,7 @@ import { Symbol } from '../Symbol';
 
 const Loader = ({ className }: ComponentPropsWithoutRef<'svg'>) => {
   const loaderClassName = clsx(
-    'block mx-auto my-0 fill-none stroke-neutral-400 stroke-1',
+    'block mx-auto my-0 fill-none stroke-neutral-700 stroke-1',
     styles.loader
   );
 
