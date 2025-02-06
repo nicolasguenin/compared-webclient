@@ -17,7 +17,7 @@ type JustifyValue =
   | 'left'
   | 'right';
 type RoundedValue = boolean | 'full' | 0 | '0' | 'sm' | 'md' | 'lg';
-type ShadowValue = boolean | 'sm' | 'md' | 'lg';
+type ShadowValue = boolean | 'tn' | 'md' | 'lg';
 
 interface BoxProps extends ComponentPropsWithoutRef<'div'> {
   align?: AlignValue;
@@ -171,7 +171,7 @@ const Box = ({
       return;
     }
     if (shadow === true) {
-      return 'shadow-md';
+      return 'shadow-tn';
     }
     return `shadow-${shadow}`;
   };

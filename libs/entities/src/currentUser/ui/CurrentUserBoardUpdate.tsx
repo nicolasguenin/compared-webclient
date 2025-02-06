@@ -124,8 +124,8 @@ const CurrentUserBoard = ({ cancel, success }: CurrentUserBoardProps) => {
           borderColor={'neutral-300'}
           flex
           gap={2}
-          marginTop={2}
-          paddingTop={2}
+          marginTop={1}
+          paddingTop={1}
         >
           <Button
             className={'pl-0'}

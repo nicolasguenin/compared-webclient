@@ -25,8 +25,8 @@ const ControlContainer = ({ children }: { children: ReactNode }) => {
       borderColor={'neutral-300'}
       flex
       gap={2}
-      marginTop={2}
-      paddingTop={2}
+      marginTop={'0-5'}
+      paddingTop={'0-5'}
     >
       {children}
     </Box>
@@ -82,18 +82,16 @@ const CurrentProfileBoard = ({
   };
 
   return (
-    <Box
-      padding={2}
-      highlighted
-      rounded
-      shadow
-      size={1200}
-      wrapper
-      {...rest}
-    >
-      {children}
-      {getBoardRender()}
-    </Box>
+    <>
+      <Box
+        size={1200}
+        {...rest}
+        wrapper
+      >
+        {children}
+        {getBoardRender()}
+      </Box>
+    </>
   );
 };
 

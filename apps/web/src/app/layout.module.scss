@@ -1,9 +1,28 @@
+@use '@cpd/style/src/scss/utils/func';
 @use 'sass:map';
 
 .body {
   background-color: map.get($neutral, 100);
+  overflow: hidden;
 }
+
+$header-height: func.rem(50);
 
 .hero {
   top: 0;
+  height: $header-height;
+}
+
+.container {
+  background-color: map.get($neutral, 50);
+}
+
+.main {
+  height: calc(100vh - $header-height);
+  overflow: hidden;
+}
+
+.sidebar {
+  width: func.rem(260);
+  overflow-y: auto;
 }

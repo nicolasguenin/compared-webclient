@@ -7,10 +7,12 @@ import type { IColorElement, IIcon } from '../../types';
 
 type ComponentProps = {
   block?: boolean;
+  bold?: boolean;
   border?: boolean;
   color?: IColorElement | 'transparent';
   disabled?: boolean;
   icon?: IIcon;
+  lineHeight?: 'xs' | 'sm' | 'default' | 'md';
   link?: boolean;
   loading?: boolean;
   lowercase?: boolean;
@@ -38,12 +40,14 @@ const Button = <Element extends React.ElementType = typeof defaultElement>(
   const {
     as: Component = defaultElement,
     block = false,
+    bold = true,
     border = true,
     children,
     className,
     color = 'neutral',
     disabled,
     icon = '',
+    lineHeight = 'default',
     link = false,
     loading = false,
     lowercase = true,
@@ -84,12 +88,14 @@ const Button = <Element extends React.ElementType = typeof defaultElement>(
 
   const rootClassName = clsx([
     block ? 'block' : 'inline-block',
+    bold ? 'text-600' : 'text-400',
     { 'w-full': block },
     { 'rounded-md': rounded },
     { [styles.buttonRounded]: roundedFull },
     getBackgroundColor(color, outline, text, link),
     `text-${getColor(color, outline, text, link)}`,
-    'relative inline-block py-0-75 px-1 text-sm text-600 lh-default bordered',
+    'relative inline-block py-0-75 px-1 text-sm bordered',
+    `lh-${lineHeight}`,
     { [styles.outline]: outline },
     outline && border ? `border-${color}` : 'border-transparent',
     `text-decoration-${link ? 'underline' : 'none'}`,
@@ -114,7 +120,8 @@ const Button = <Element extends React.ElementType = typeof defaultElement>(
       {!!icon && (
         <Symbol
           name={icon}
-          className={clsx({ 'mr-0-75': children })}
+          size={24}
+          className={clsx({ 'mr-0-5': children })}
         />
       )}
       {children}
