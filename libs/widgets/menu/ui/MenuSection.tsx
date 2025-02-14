@@ -1,10 +1,11 @@
 'use client';
 
-import { Box, Button, Symbol, Text } from '@cpd/ui';
+import { Box, Button, Symbol } from '@cpd/ui';
 import clsx from 'clsx';
 import { ComponentPropsWithoutRef, useState } from 'react';
-import { IMenuSection } from '../types/Menu.interface';
+import { IMenuSection, MenuType } from '../types/Menu.interface';
 import MenuGroup from './MenuGroup';
+import MenuItem from './MenuItem';
 
 interface MenuSectionProps extends ComponentPropsWithoutRef<'div'> {
   data: IMenuSection;
@@ -47,12 +48,23 @@ export default function MenuSection({ data, ...rest }: MenuSectionProps) {
         </Box>
       )}
       <Box className={innerClassName}>
-        {data.items.map((x, index) => (
-          <MenuGroup
-            key={index}
-            data={x}
-          />
-        ))}
+        {data.items.map((x, index) => {
+          if (x.type === MenuType.group) {
+            return (
+              <MenuGroup
+                key={index}
+                data={x}
+              />
+            );
+          } else if (x.type === MenuType.link) {
+            return (
+              <MenuItem
+                data={x}
+                key={index}
+              />
+            );
+          }
+        })}
       </Box>
     </Box>
   );

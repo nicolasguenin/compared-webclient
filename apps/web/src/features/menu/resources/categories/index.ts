@@ -1,6 +1,4 @@
-export { default as gaming } from './gaming';
-export { default as electronic } from './electronic';
-export { default as house } from './house';
-export { default as movie } from './movie';
-export { default as photography } from './photography';
-export { default as tool } from './tool';
+export { default as vegan } from './vegan';
+export { default as vegetarian } from './vegetarian';
+export { default as recipes } from './recipes';
+export { default as worldCooking } from './world-cooking';

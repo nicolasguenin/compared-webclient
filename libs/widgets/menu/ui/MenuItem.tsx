@@ -4,26 +4,25 @@ import { usePathname } from 'next/navigation';
 import { ComponentPropsWithoutRef } from 'react';
 import { IMenuItem } from '../types/Menu.interface';
 
-interface MenuItemProps extends ComponentPropsWithoutRef<'li'> {
+interface MenuItemProps extends ComponentPropsWithoutRef<'button'> {
   data: IMenuItem;
 }
 
-export default function MenuItem({ data, ...rest }: MenuItemProps) {
+export default function MenuItem({ data, children }: MenuItemProps) {
   const pathname = usePathname();
 
   return (
-    <List.Item {...rest}>
-      <Button
-        as={Link}
-        href={data.url}
-        block
-        lineHeight={'md'}
-        text
-        bold={pathname === data.url}
-      >
-        {data.icon?.name && <Symbol name={data.icon.name} />}
-        {data.name}
-      </Button>
-    </List.Item>
+    <Button
+      as={Link}
+      href={data.url}
+      block
+      lineHeight={'md'}
+      text
+      bold={pathname === data.url}
+      icon={data.icon?.name}
+    >
+      {data.name}
+      {children}
+    </Button>
   );
 }

@@ -1,20 +1,11 @@
 import { IMenuGroup } from '@cpd/widgets/menu/types/Menu.interface';
-import {
-  electronic,
-  gaming,
-  house,
-  movie,
-  photography,
-  tool,
-} from './categories';
+import { recipes, vegan, vegetarian, worldCooking } from './categories';
 
 const resources: Record<string, IMenuGroup> = {
-  electronic,
-  gaming,
-  house,
-  movie,
-  photography,
-  tool,
+  recipes,
+  vegan,
+  vegetarian,
+  'world-cooking': worldCooking,
 };
 
 export default resources;

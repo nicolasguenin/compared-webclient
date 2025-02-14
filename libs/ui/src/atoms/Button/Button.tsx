@@ -120,7 +120,7 @@ const Button = <Element extends React.ElementType = typeof defaultElement>(
       {!!icon && (
         <Symbol
           name={icon}
-          size={24}
+          size={20}
           className={clsx({ 'mr-0-5': children })}
         />
       )}

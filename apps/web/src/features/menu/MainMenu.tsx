@@ -1,7 +1,7 @@
 'use client';
 
 import { useCategories } from '@cpd/entities/src/category';
-import { createMenuSection } from '@cpd/widgets/menu/helpers';
+import { createMenuItem, createMenuSection } from '@cpd/widgets/menu/helpers';
 import { MenuRoot } from '@cpd/widgets/menu/ui';
 import { useMemo } from 'react';
 import resources from './resources';
@@ -13,7 +13,19 @@ export default function MainMenu() {
   );
 
   const menu = useMemo(() => {
-    const res = [];
+    const res = [
+      createMenuSection({
+        items: [
+          createMenuItem({
+            name: 'Recipe generator',
+            icon: {
+              name: 'electron-framework',
+            },
+            url: '/recipe-generator',
+          }),
+        ],
+      }),
+    ];
 
     if (categories?.length) {
       res.push(
@@ -21,13 +33,33 @@ export default function MainMenu() {
           name: 'Themes',
           items: categories.map((category) => {
             if (!resources[category]) {
-              throw new Error('Unrecognized category name');
+              throw new Error(`Unrecognized category name: ${category}`);
             }
             return resources[category];
           }),
         })
       );
     }
+
+    res.push(
+      createMenuSection({
+        name: 'Profile',
+        items: [
+          createMenuItem({
+            name: 'Favorites',
+            icon: { name: 'heart-outline' },
+            url: '/user/favorites',
+          }),
+          createMenuItem({
+            name: 'Your recipes',
+            icon: {
+              name: 'book-open-page-variant-outline',
+            },
+            url: '/user/recipes',
+          }),
+        ],
+      })
+    );
 
     return res;
   }, [categories]);

@@ -1,5 +1,11 @@
 import { IIcon } from '@cpd/ui/src/types';
 
+export enum MenuType {
+  group = 'group',
+  link = 'link',
+  section = 'section',
+}
+
 export type IMenuTag = {
   name: string;
 };
@@ -12,7 +18,7 @@ export type IMenuItem = {
   icon?: IMenuIcon;
   name: string;
   tags?: IMenuTag[];
-  type: 'link';
+  type: MenuType.link;
   url: string;
 };
 
@@ -21,13 +27,13 @@ export type IMenuGroup = {
   icon?: IMenuIcon;
   items: IMenuItem[];
   tags?: IMenuTag[];
-  type: 'group';
+  type: MenuType.group;
 };
 
 export type IMenuSection = {
   name?: string;
   icon?: IMenuIcon;
-  items: IMenuGroup[];
+  items: (IMenuGroup | IMenuItem)[];
   tags?: IMenuTag[];
-  type: 'section';
+  type: MenuType.section;
 };

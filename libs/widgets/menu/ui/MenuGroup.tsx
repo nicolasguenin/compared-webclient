@@ -54,10 +54,9 @@ export default function MenuGroup({ data, ...rest }: MenuGroupProps) {
       </Button>
       <List.Root className={listClassName}>
         {data.items.map((x, index) => (
-          <MenuItem
-            data={x}
-            key={index}
-          />
+          <List.Item key={index}>
+            <MenuItem data={x} />
+          </List.Item>
         ))}
       </List.Root>
     </Box>
