@@ -7,10 +7,11 @@ import { useMemo } from 'react';
 import resources from './resources';
 
 export default function MainMenu() {
-  const { data: categories } = useCategories(
-    { orderBy: 'popularity', order: 'asc' },
-    'menu-popular-categories'
-  );
+  // const { data: categories } = useCategories(
+  //   { orderBy: 'popularity', order: 'asc' },
+  //   'menu-popular-categories'
+  // );
+  const categories = [];
 
   const menu = useMemo(() => {
     const res = [

@@ -7,16 +7,16 @@ import {
 import MainMenu from './MainMenu';
 
 export default async function MainMenuContainer() {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery({
-    queryKey: ['menu-popular-categories'],
-    queryFn: () => fetchCategories({ orderBy: 'popularity', order: 'asc' }),
-  });
+  // const queryClient = new QueryClient();
+  //
+  // await queryClient.prefetchQuery({
+  //   queryKey: ['menu-popular-categories'],
+  //   queryFn: () => fetchCategories({ orderBy: 'popularity', order: 'asc' }),
+  // });
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <MainMenu />
-    </HydrationBoundary>
+    // <HydrationBoundary state={dehydrate(queryClient)}>
+    <MainMenu />
+    // </HydrationBoundary>
   );
 }

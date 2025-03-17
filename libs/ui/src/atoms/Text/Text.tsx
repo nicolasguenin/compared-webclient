@@ -3,6 +3,7 @@ import { ComponentPropsWithoutRef } from 'react';
 import { IColor, SpaceValue } from '../../types';
 
 type ComponentProps = {
+  bgColor?: IColor;
   block?: boolean;
   bold?: boolean;
   color?: IColor | 'white';
@@ -57,6 +58,7 @@ const defaultElement = 'p';
 
 export default function Text({
   as: Component = defaultElement,
+  bgColor,
   block,
   bold,
   className,
@@ -142,6 +144,7 @@ export default function Text({
 
   const rootClassName = clsx(
     'text',
+    bgColor && `bg-${bgColor}`,
     block && 'block',
     bold && !weight && 'text-600',
     getColor(color, light),

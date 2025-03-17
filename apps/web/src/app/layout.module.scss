@@ -24,5 +24,6 @@ $header-height: func.rem(50);
 
 .sidebar {
   width: func.rem(260);
+  flex: 0 0 func.rem(260);
   overflow-y: auto;
 }

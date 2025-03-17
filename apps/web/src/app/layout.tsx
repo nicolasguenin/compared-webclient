@@ -37,8 +37,8 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className={bodyClasses}>
-        <TanstackProvider>
-          <ToastProvider>
+        <ToastProvider>
+          <TanstackProvider>
             <AuthProvider loggedInValue={!!user}>
               <Hero
                 className={heroClasses}
@@ -62,8 +62,8 @@ export default async function RootLayout({
                 </Box>
               </main>
             </AuthProvider>
-          </ToastProvider>
-        </TanstackProvider>
+          </TanstackProvider>
+        </ToastProvider>
       </body>
     </html>
   );

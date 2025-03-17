@@ -1,13 +1,17 @@
 'use client';
 
+import { useToast } from '@cpd/ui';
 import {
   isServer,
+  QueryCache,
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
 import { ReactNode } from 'react';
 
 const makeQueryClient = () => {
+  const { danger: showToast } = useToast();
+
   return new QueryClient({
     defaultOptions: {
       queries: {
@@ -15,6 +19,13 @@ const makeQueryClient = () => {
         staleTime: 60 * 1000,
       },
     },
+    queryCache: new QueryCache({
+      onError: (err, query) => {
+        if (query.meta?.errorMsg) {
+          showToast(query.meta.errorMsg as string);
+        }
+      },
+    }),
   });
 };
 

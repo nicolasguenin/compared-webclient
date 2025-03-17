@@ -8,7 +8,7 @@ import { useToast } from '../context/ToastProvider';
 import ToastProgress from './ToastProgress';
 
 const icons: Record<IToastState, IIcon> = {
-  danger: 'close-circle',
+  danger: 'information',
   info: 'information',
   success: 'check-circle',
   warning: 'alert-circle',
