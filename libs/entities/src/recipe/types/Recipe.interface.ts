@@ -4,5 +4,3 @@ export interface IRecipe {
   steps: string[];
   uuid: string;
 }
-
-export type IRecipes = IRecipe[];

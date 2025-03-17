@@ -1,6 +1,5 @@
-import { FetchRecipes } from '@cpd/entities/recipes';
+import { fetchRecipes, FetchRecipes } from '@cpd/features/recipes';
 import { useQuery } from '@tanstack/react-query';
-import fetchRecipes from '../api/get-recipes';
 
 export default function useRecipes(options: FetchRecipes = {}) {
   return useQuery({

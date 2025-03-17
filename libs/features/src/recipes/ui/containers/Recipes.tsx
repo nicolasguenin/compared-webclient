@@ -1,6 +1,6 @@
 'use client';
 
-import { useRecipes } from '@cpd/entities/recipes';
+import { useRecipes } from '@cpd/features/recipes';
 import { Box, Text } from '@cpd/ui';
 import { lazy } from 'react';
 

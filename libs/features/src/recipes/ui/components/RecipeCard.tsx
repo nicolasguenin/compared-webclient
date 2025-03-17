@@ -1,4 +1,4 @@
-import { IRecipe } from '@cpd/entities/recipes';
+import { IRecipe } from 'libs/entities/src/recipe';
 import { d } from '@cpd/helpers';
 import { Box, Button, Text } from '@cpd/ui';
 import Link from 'next/link';
