@@ -2,6 +2,7 @@
 
 export * from './Box';
 export * from './Button';
+export * from './Form';
 export * from './Hero';
 export * from './Input';
 export { default as List } from './List';

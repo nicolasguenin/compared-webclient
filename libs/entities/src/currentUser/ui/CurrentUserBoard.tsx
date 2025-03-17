@@ -24,15 +24,7 @@ const CurrentUserBoard = () => {
         </Box>
         <Box>
           <Text light>Registration date</Text>
-          <Text bold>{d(currentUser.createdAt).format('LL [at] LT')}</Text>
-        </Box>
-        <Box>
-          <Text light>First name</Text>
-          <Text bold>{currentUser.firstName}</Text>
-        </Box>
-        <Box>
-          <Text light>Last name</Text>
-          <Text bold>{currentUser.lastName}</Text>
+          <Text bold>{d(currentUser.created_at).format('LL [at] LT')}</Text>
         </Box>
       </Box>
     )

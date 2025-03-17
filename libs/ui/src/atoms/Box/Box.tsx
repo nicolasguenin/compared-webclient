@@ -21,6 +21,7 @@ type ShadowValue = boolean | 'tn' | 'md' | 'lg';
 
 interface BoxProps extends ComponentPropsWithoutRef<'div'> {
   align?: AlignValue;
+  bgColor?: IColor;
   borderColor?: IColor;
   bordered?: boolean;
   borderTop?: boolean;
@@ -33,6 +34,7 @@ interface BoxProps extends ComponentPropsWithoutRef<'div'> {
   gap?: SpaceValue;
   grid?: boolean;
   grow?: boolean;
+  height?: string | number;
   highlighted?: boolean;
   justify?: JustifyValue;
   margin?: SpaceValue;
@@ -51,6 +53,7 @@ interface BoxProps extends ComponentPropsWithoutRef<'div'> {
   shrink?: boolean;
   size?: 300 | 450 | 750 | 1024 | 1200;
   textAlign?: 'left' | 'center' | 'right';
+  width?: string | number;
   wFull?: boolean;
   wrap?: boolean;
   wrapper?: boolean;
@@ -58,6 +61,7 @@ interface BoxProps extends ComponentPropsWithoutRef<'div'> {
 
 const Box = ({
   align,
+  bgColor,
   bordered = false,
   borderTop,
   borderLeft,
@@ -71,6 +75,7 @@ const Box = ({
   gap,
   grid,
   grow,
+  height,
   highlighted,
   justify,
   margin,
@@ -90,6 +95,7 @@ const Box = ({
   shrink,
   size,
   wFull = false,
+  width,
   wrap,
   wrapper,
   ...rest
@@ -191,6 +197,7 @@ const Box = ({
 
   const rootClassName = clsx(
     'box',
+    bgColor && `bg-${bgColor}`,
     borderColor && `border-${borderColor}`,
     bordered && 'bordered',
     borderTop && 'border-top',
@@ -238,6 +245,19 @@ const Box = ({
     className
   );
 
+  const getStyle = () => {
+    let style: Record<'height' | 'width', string> = {};
+
+    if (height !== undefined) {
+      style.height = typeof height === 'string' ? height : `${height}px`;
+    }
+    if (width !== undefined) {
+      style.width = typeof width === 'string' ? width : `${width}px`;
+    }
+
+    return style;
+  };
+
   useEffect(() => {
     const getRowClass = () => {
       if (!row || !refElement.current) {
@@ -272,6 +292,7 @@ const Box = ({
   return (
     <div
       ref={refElement}
+      style={getStyle()}
       className={rootClassName}
       {...rest}
     ></div>

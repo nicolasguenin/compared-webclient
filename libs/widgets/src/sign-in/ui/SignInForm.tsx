@@ -1,56 +1,16 @@
 'use client';
 
-import { Button, Input, Symbol, Text } from '@cpd/ui';
-import { Box } from '@cpd/ui';
+import { Box, Symbol, Button, FormTextError, Input, Text } from '@cpd/ui';
 import clsx from 'clsx';
-import { ComponentPropsWithoutRef, useActionState } from 'react';
-import { signIn, useAuth, SignInError } from '@cpd/shared';
+import { ComponentPropsWithoutRef, FormEvent, useState } from 'react';
+import { signIn, useAuth } from '@cpd/shared';
 
 const SignInFormInner = () => {
   const { isLoggedIn, setIsLoggedIn } = useAuth();
+  const [error, setError] = useState<null | string>(null);
+  const [succeeded, setSucceeded] = useState(false);
 
-  const onSubmit = (previousState: unknown, formData: FormData) => {
-    const email = formData.get('email');
-    const password = formData.get('password');
-
-    const violations: SignInError = {};
-
-    if (!email) {
-      violations.email = 'Your email is required';
-    }
-    if (!password) {
-      violations.password = 'Your password is required';
-    }
-    if (!email || !password) {
-      return {
-        error: {
-          violations,
-          message: 'Some data are missing',
-        },
-        payload: {
-          email: email as string,
-          password: password as string,
-        },
-      };
-    }
-
-    return signIn({ email: email, password: password as string })
-      .then(({ data }) => {
-        setIsLoggedIn(true);
-        return data;
-      })
-      .catch((err) => {
-        return err;
-      });
-  };
-  const [data, action] = useActionState(onSubmit, undefined);
-  const errorEmailMsg = data?.error?.violations?.email || '';
-  const errorPasswordMsg = data?.error?.violations?.password || '';
-
-  const defaultEmailValue = data?.payload?.email as string;
-  const defaultPasswordValue = data?.payload?.password as string;
-
-  if (!data?.succeeded && isLoggedIn) {
+  if (!succeeded && isLoggedIn) {
     return (
       <div className='text-center text-danger text-md'>
         <Symbol
@@ -67,7 +27,7 @@ const SignInFormInner = () => {
     );
   }
 
-  if (data?.succeeded) {
+  if (succeeded) {
     return (
       <div className='text-center text-success text-md'>
         <Symbol
@@ -84,10 +44,29 @@ const SignInFormInner = () => {
     );
   }
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (error) {
+      setError(null);
+    }
+
+    const formData = new FormData(e.target as HTMLFormElement);
+    const { username, password } = Object.fromEntries(formData);
+    return signIn({ username, password })
+      .then(() => {
+        setIsLoggedIn(true);
+        setSucceeded(true);
+      })
+      .catch((err) => {
+        setError(err.response?.data?.message || err.message);
+      });
+  };
+
   return (
     <>
       <form
-        action={action}
+        onSubmit={handleSubmit}
         className={'w-full'}
       >
         <Text
@@ -102,23 +81,21 @@ const SignInFormInner = () => {
         </Text>
         <div className={'mt-2'}>
           <Input
-            defaultValue={defaultEmailValue}
-            type='email'
-            name='email'
-            errorMessage={errorEmailMsg}
+            name='username'
+            required
           >
-            Email
+            Username
           </Input>
           <Input
-            defaultValue={defaultPasswordValue}
             type='password'
             name='password'
-            errorMessage={errorPasswordMsg}
+            required
           >
             Password
           </Input>
         </div>
         <Button block>Sign in</Button>
+        {error && <FormTextError error={error} />}
       </form>
     </>
   );

@@ -3,6 +3,7 @@ import { ComponentPropsWithoutRef } from 'react';
 import { IColor, SpaceValue } from '../../types';
 
 type ComponentProps = {
+  block?: boolean;
   bold?: boolean;
   color?: IColor | 'white';
   light?: boolean;
@@ -29,6 +30,9 @@ type TextProps = ComponentProps &
     | (ComponentPropsWithoutRef<'p'> & {
         as?: 'p';
       })
+    | (ComponentPropsWithoutRef<'span'> & {
+        as?: 'span';
+      })
     | (ComponentPropsWithoutRef<'h1'> & {
         as?: 'h1';
       })
@@ -53,6 +57,7 @@ const defaultElement = 'p';
 
 export default function Text({
   as: Component = defaultElement,
+  block,
   bold,
   className,
   color,
@@ -137,6 +142,7 @@ export default function Text({
 
   const rootClassName = clsx(
     'text',
+    block && 'block',
     bold && !weight && 'text-600',
     getColor(color, light),
     lineHeight && `lh-${lineHeight}`,

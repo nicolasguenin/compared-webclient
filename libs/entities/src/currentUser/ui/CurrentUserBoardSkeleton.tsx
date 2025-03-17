@@ -29,20 +29,6 @@ const CurrentUserBoardSkeleton = () => {
           width={'100%'}
         />
       </Box>
-      <Box>
-        <Text light>First name</Text>
-        <Skeleton
-          height={'1.8rem'}
-          width={'100%'}
-        />
-      </Box>
-      <Box>
-        <Text light>Last name</Text>
-        <Skeleton
-          height={'1.8rem'}
-          width={'100%'}
-        />
-      </Box>
     </Box>
   );
 };

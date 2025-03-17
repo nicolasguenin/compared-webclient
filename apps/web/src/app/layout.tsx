@@ -1,5 +1,6 @@
 import { AuthProvider } from '@cpd/shared';
 import clsx from 'clsx';
+import { getCookie } from 'cookies-next';
 import type { Metadata } from 'next';
 import '@cpd/style/src/scss/app.scss';
 import { Box, Hero, ToastProvider } from '@cpd/ui';
@@ -24,8 +25,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const isLoggedIn = !!cookieStore.get('authToken')?.value;
+  const user = await getCookie('user', { cookies });
 
   const bodyClasses = clsx(fontFamily.className, styles.body);
   const heroClasses = clsx('sticky', styles.hero);
@@ -39,7 +39,7 @@ export default async function RootLayout({
       <body className={bodyClasses}>
         <TanstackProvider>
           <ToastProvider>
-            <AuthProvider loggedInValue={isLoggedIn}>
+            <AuthProvider loggedInValue={!!user}>
               <Hero
                 className={heroClasses}
                 left={<Logo />}
@@ -53,6 +53,7 @@ export default async function RootLayout({
                   className={styles.container}
                   padding={'0-75'}
                   marginRight={'0-75'}
+                  marginBottom={1}
                   grow
                   rounded
                   shadow

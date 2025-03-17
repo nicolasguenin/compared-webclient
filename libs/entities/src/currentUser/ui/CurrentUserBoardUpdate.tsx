@@ -1,15 +1,9 @@
 'use client';
 
-import { buildViolations, d, getViolationMsg } from '@cpd/helpers';
 import { Box, Button, Input, Text } from '@cpd/ui';
-import { ComponentPropsWithoutRef, useActionState, useState } from 'react';
+import { ComponentPropsWithoutRef, FormEvent, useState } from 'react';
+import { d } from '@cpd/helpers';
 import { useCurrentUser, useUpdateCurrentUser } from '../hooks';
-import { ICurrentUser } from '../types';
-
-type IUpdateViolations = {
-  email?: string;
-  username?: string;
-};
 
 interface CurrentUserBoardProps extends ComponentPropsWithoutRef<'div'> {
   cancel: () => void;
@@ -22,7 +16,6 @@ const CurrentUserBoard = ({ cancel, success }: CurrentUserBoardProps) => {
     mutateAsync: mutateUser,
     isPending,
     isError,
-    error,
   } = useUpdateCurrentUser();
 
   const [dirty, setDirty] = useState(false);
@@ -32,31 +25,12 @@ const CurrentUserBoard = ({ cancel, success }: CurrentUserBoardProps) => {
     }
   };
 
-  const onSubmit = (previousState: ICurrentUser, formData: FormData): any => {
-    const email = formData.get('email') as string;
-    const firstName = formData.get('firstName') as string;
-    const lastName = formData.get('lastName') as string;
-    const username = formData.get('username') as string;
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): any => {
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement);
+    const { username, email } = Object.fromEntries(formData);
 
-    const violations: IUpdateViolations = {};
-    if (!email) {
-      violations.email = 'Your email is required';
-    }
-    if (!username) {
-      violations.username = 'Your username is required';
-    }
-
-    const payload = { email, firstName, lastName, username };
-
-    if (!email || !username) {
-      return buildViolations(
-        violations,
-        'Some required data are missing',
-        payload
-      );
-    }
-
-    return mutateUser(payload)
+    return mutateUser({ username, email })
       .then(() => {
         success();
       })
@@ -65,11 +39,9 @@ const CurrentUserBoard = ({ cancel, success }: CurrentUserBoardProps) => {
       });
   };
 
-  const [data, action] = useActionState(onSubmit, currentUser);
-
   return (
     currentUser && (
-      <form action={action}>
+      <form onSubmit={handleSubmit}>
         <Box
           columns={2}
           gap={2}
@@ -78,45 +50,24 @@ const CurrentUserBoard = ({ cancel, success }: CurrentUserBoardProps) => {
           <Box row>
             <Text light>Username</Text>
             <Input
-              defaultValue={data?.payload?.username ?? currentUser.username}
+              defaultValue={currentUser.username}
               name={'username'}
-              errorMessage={getViolationMsg(data, 'username')}
               onChange={() => changeDirty()}
             />
           </Box>
           <Box>
             <Text light>Email</Text>
             <Input
-              defaultValue={data?.payload?.email ?? currentUser.email}
+              defaultValue={currentUser.email}
               name={'email'}
               type={'email'}
-              errorMessage={getViolationMsg(data, 'email')}
+              required
               onChange={() => changeDirty()}
             />
           </Box>
           <Box>
             <Text light>Registration date</Text>
-            <Text bold>{d(currentUser.createdAt).format('LLL')}</Text>
-          </Box>
-          <Box>
-            <Text light>First name</Text>
-            <Input
-              defaultValue={
-                (data?.payload?.firstName ?? currentUser.firstName) || ''
-              }
-              name={'firstName'}
-              onChange={() => changeDirty()}
-            />
-          </Box>
-          <Box>
-            <Text light>Last name</Text>
-            <Input
-              defaultValue={
-                (data?.payload?.lastName ?? currentUser.lastName) || ''
-              }
-              name={'lastName'}
-              onChange={() => changeDirty()}
-            />
+            <Text bold>{d(currentUser.created_at).format('LLL')}</Text>
           </Box>
         </Box>
         <Box
@@ -147,9 +98,7 @@ const CurrentUserBoard = ({ cancel, success }: CurrentUserBoardProps) => {
             bold
             marginTop={1}
             color={'danger'}
-          >
-            {data?.error?.message || error.message}
-          </Text>
+          ></Text>
         )}
       </form>
     )

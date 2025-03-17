@@ -34,5 +34,8 @@
     "typescript": "^5.7.3",
     "typescript-plugin-css-modules": "^5.1.0",
     "vitest": "^3.0.2"
+  },
+  "dependencies": {
+    "cookies-next": "^5.1.0"
   }
 }

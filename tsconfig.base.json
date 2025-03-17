@@ -15,7 +15,8 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@cpd/entities/*": ["libs/ui/srd/entities/*"],
+      "@cpd/entities/*": ["libs/entities/src/*"],
+      "@cpd/features/*": ["libs/features/src/*"],
       "@cpd/helpers": ["libs/helpers/src"],
       "@cpd/shared": ["libs/shared/src"],
       "@cpd/ui": ["libs/ui/src/atoms"],

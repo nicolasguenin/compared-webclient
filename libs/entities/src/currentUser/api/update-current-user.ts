@@ -1,14 +1,14 @@
 import { api } from '@cpd/shared';
+import { getCookie } from 'cookies-next';
 import { ICurrentUser } from '../types';
 
 type IPayload = {
-  email: string;
-  firstName: string | null;
-  lastName: string | null;
-  username: string;
+  email: string | FormDataEntryValue;
+  username: string | FormDataEntryValue;
 };
 
 export default async function updateCurrentUser(payload: IPayload) {
-  const { data } = await api.put<ICurrentUser>('/user', payload);
+  const userId = await getCookie('user');
+  const { data } = await api.patch<ICurrentUser>(`/users/${userId}`, payload);
   return data;
 }

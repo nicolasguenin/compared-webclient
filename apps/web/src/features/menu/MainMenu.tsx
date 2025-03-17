@@ -23,6 +23,13 @@ export default function MainMenu() {
             },
             url: '/recipe-generator',
           }),
+          createMenuItem({
+            name: 'Recipes',
+            icon: {
+              name: 'chef-hat',
+            },
+            url: '/recipes',
+          }),
         ],
       }),
     ];
