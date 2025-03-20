@@ -1,0 +1,18 @@
+@use '@cpd/style/src/scss/utils/func';
+
+.tooltip {
+  padding: func.rem(16);
+
+  &::before {
+    position: absolute;
+    top: -#{func.rem(5)};
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform: translateX(-50%);
+    border-left: func.rem(20) solid transparent;
+    border-right: func.rem(20) solid transparent;
+    border-bottom: func.rem(18) solid white;
+    content: '';
+  }
+}

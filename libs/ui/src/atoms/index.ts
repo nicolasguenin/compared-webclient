@@ -13,3 +13,4 @@ export * from './Skeleton';
 export * from './Symbol';
 export * from './Text';
 export * from './Toast';
+export * from './Tooltip';

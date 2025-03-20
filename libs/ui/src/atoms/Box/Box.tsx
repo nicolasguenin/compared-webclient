@@ -1,5 +1,6 @@
+import { mergeRefs } from '@cpd/shared';
 import clsx from 'clsx';
-import { ComponentPropsWithoutRef, useEffect, useRef, useState } from 'react';
+import { ComponentProps, Ref, useEffect, useRef, useState } from 'react';
 import { IColor, SpaceValue } from '../../types';
 import styles from './Box.module.scss';
 
@@ -19,9 +20,9 @@ type JustifyValue =
 type RoundedValue = boolean | 'full' | 0 | '0' | 'sm' | 'md' | 'lg';
 type ShadowValue = boolean | 'tn' | 'md' | 'lg';
 
-interface BoxProps extends ComponentPropsWithoutRef<'div'> {
+interface BoxProps extends ComponentProps<'div'> {
   align?: AlignValue;
-  bgColor?: IColor;
+  bgColor?: IColor | 'white';
   borderColor?: IColor;
   bordered?: boolean;
   borderTop?: boolean;
@@ -47,6 +48,7 @@ interface BoxProps extends ComponentPropsWithoutRef<'div'> {
   paddingLeft?: SpaceValue;
   paddingRight?: SpaceValue;
   paddingBottom?: SpaceValue;
+  ref?: Ref<HTMLDivElement>;
   rounded?: RoundedValue;
   row?: boolean;
   shadow?: ShadowValue;
@@ -88,6 +90,7 @@ const Box = ({
   paddingLeft,
   paddingRight,
   paddingBottom,
+  ref,
   rounded = false,
   row,
   textAlign,
@@ -246,7 +249,7 @@ const Box = ({
   );
 
   const getStyle = () => {
-    let style: Record<'height' | 'width', string> = {};
+    let style: Record<string, string> = {};
 
     if (height !== undefined) {
       style.height = typeof height === 'string' ? height : `${height}px`;
@@ -291,7 +294,7 @@ const Box = ({
 
   return (
     <div
-      ref={refElement}
+      ref={mergeRefs(ref, refElement)}
       style={getStyle()}
       className={rootClassName}
       {...rest}
