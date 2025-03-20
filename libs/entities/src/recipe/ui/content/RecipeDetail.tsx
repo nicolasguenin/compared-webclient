@@ -1,8 +1,10 @@
 'use client';
 
 import fetchRecipe from '@cpd/entities/recipe/api/fetch-recipe';
+import { RecipeTags } from '@cpd/features/recipe';
 import withError from '@cpd/shared/src/error/withError';
 import { Box, Loader, Text } from '@cpd/ui';
+import { d } from '@cpd/helpers';
 import { useQuery } from '@tanstack/react-query';
 
 function RecipeDetail({ recipeId }: { recipeId: string }) {
@@ -35,6 +37,13 @@ function RecipeDetail({ recipeId }: { recipeId: string }) {
       >
         {recipe.name}
       </Text>
+      <Text
+        size={'sm'}
+        marginBottom={'0-5'}
+      >
+        Posted on {d(recipe.createdAt).format('LL')}
+      </Text>
+      {recipe.tags?.length && <RecipeTags tags={recipe.tags} />}
     </Box>
   );
 }

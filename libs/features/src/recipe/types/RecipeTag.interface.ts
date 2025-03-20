@@ -1,7 +1,7 @@
-import { IIcon } from '@cpd/ui/src/types';
-
 export interface IRecipeTag {
   id: number;
-  icon: IIcon;
+  icon: 'gluten-free' | 'vegan' | 'vegetarian';
   name: string;
 }
+
+export type IRecipeTags = IRecipeTag[];
